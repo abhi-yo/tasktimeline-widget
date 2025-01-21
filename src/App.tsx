@@ -33,6 +33,10 @@ function App() {
     );
   };
 
+  const handleDeleteTask = (taskId: string) => {
+    setTasks((prev) => prev.filter((task) => task.id !== taskId));
+  };
+
   const timeSlots: TimeSlot[] = Array.from({ length: 24 }, (_, i) => {
     const hour = `${i.toString().padStart(2, '0')}:00`;
     return {
@@ -63,6 +67,7 @@ function App() {
                 key={slot.hour}
                 slot={slot}
                 onToggleTask={handleToggleTask}
+                onDeleteTask={handleDeleteTask}
               />
             ))}
           </div>
